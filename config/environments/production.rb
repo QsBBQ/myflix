@@ -28,4 +28,5 @@ Myflix::Application.configure do
   }
   ActionMailer::Base.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: 'secure-lowlands-6771.herokuapp.com' }
+  heroku config:set REDIS_PROVIDER=REDISTOGO_URL
 end
