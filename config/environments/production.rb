@@ -27,4 +27,5 @@ Myflix::Application.configure do
   :authentication => :plain,
   }
   ActionMailer::Base.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'secure-lowlands-6771.herokuapp.com' }
 end
