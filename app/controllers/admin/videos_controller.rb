@@ -7,8 +7,14 @@ class Admin::VideosController < ApplicationController
   end
 
   def create
-    Video.create(video_params)
-    redirect_to new_admin_video_path
+    @video = Video.create(video_params)
+    if @video.save
+      flash[:success] = "You have successfully added the video '#{@video.title}'."
+      redirect_to new_admin_video_path
+    else
+      flash[:danger] = "You cannot add this video. Please check the errors."
+      render :new
+    end
   end
 
   private
