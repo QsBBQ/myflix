@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Admin Adds New Video' do
+ feature 'Admin Adds New Video' do
   scenario 'Admin successfully adds a new video' do
     admin = Fabricate(:admin)
     dramas = Fabricate(:category, name: "Dramas")
@@ -10,8 +10,9 @@ describe 'Admin Adds New Video' do
     fill_in "Title", with: "Monk"
     select "Dramas", from: "Category"
     fill_in "Description", with: "SF detective"
-    attach_file "Large Cover", with: "spec/support/uploads/monk_large.jpg"
-    attach_file "Small Cover", with: "spec/support/uploads/monk.jpg"
+    save_and_open_page
+    attach_file "Large cover", "spec/support/uploads/monk_large.jpg"
+    attach_file "Small cover", "spec/support/uploads/monk.jpg"
     fill_in "Video URL", with: "http://www.example.com/my_video.mp4"
     click_button "Add Video"
 
