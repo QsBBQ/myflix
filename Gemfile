@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.3'
 
+gem 'therubyracer'
 gem 'bootstrap-sass'
 gem 'coffee-rails'
 gem 'rails'
@@ -14,6 +15,8 @@ gem 'sidekiq'
 gem 'unicorn'
 gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
 gem 'paratrooper'
+gem 'carrierwave'
+gem 'mini_magick'
 
 
 group :development do
