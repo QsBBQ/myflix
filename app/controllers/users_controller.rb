@@ -16,6 +16,8 @@ class UsersController < ApplicationController
         :card => params[:stripeToken],
         :description => "Sign up charge for #{@user.email}"
       )
+      StripeWrapper::Charge.create(
+        )
       AppMailer.send_welcome_email(@user).deliver
       redirect_to sign_in_path
     else
