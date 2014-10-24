@@ -35,8 +35,6 @@ group :test, :development do
   gem 'faker'
   gem 'pry'
   gem 'pry-nav'
-  gem 'vcr'
-  gem 'webmock'
 end
 
 group :test do
@@ -45,6 +43,10 @@ group :test do
   gem 'launchy'
   gem 'capybara-email', github: 'dockyard/capybara-email'
   #gem 'capybara-email'
+  gem 'vcr'
+  gem 'webmock'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
 end
 
 group :production do
