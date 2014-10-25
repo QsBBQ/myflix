@@ -1,5 +1,9 @@
 module StripeWrapper
   class Charge
+  	def initialize(response)
+  		@response = response
+  	end
+
     def self.create(options={})
     	Stripe::Charge.create(
     		amount: options[:amount],
@@ -7,6 +11,11 @@ module StripeWrapper
     		card: options[:card],
     		description: options[:description]
     	)
-    end	
+    	new(response)
+    end
+
+    def successful?
+    	@response.present?
+    end
   end
 end

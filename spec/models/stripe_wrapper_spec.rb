@@ -20,9 +20,26 @@ describe StripeWrapper do
 					description: "a valid charge"
 				)
 
-				expect(response.amount).to eq(999)
-				expect(response.currency).to eq('usd')
+				expect(response).to be_successful
+			end
+			it "makes a card declined charge", :vcr do
+				Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+				token = Stripe::Token.create( 
+					:card => { 
+					  :number => "4040404040404040", 
+					  :exp_month => 10, 
+					  :exp_year => 2015, 
+					  :cvc => "314" 
+					}, 
+				).id
 
+				response = StripeWrapper::Charge.create(
+					amount: 999,
+					card: token,
+					description: "an invalid charge"
+				)
+
+				expect(response).not_to be_successful
 			end
 		end
 	end
